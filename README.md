@@ -23,8 +23,8 @@ https://geks-ts-react.herokuapp.com/login
 В папке проекта выполнить команды:
 ### 2. Билдим контейнер командой:
 `docker build -f Dockerfile -t squeeze-app:latest`
-### 3. Запускаем контейнер на 4000 порту командой:
-`docker run -it -p 4000:80 --rm squeeze-app:latest`
+### 3. Запускаем контейнер на 3000 порту командой:
+`docker run -it -p 3000:80 --rm squeeze-app:latest`
 
-Если без ошибок, доступен по адресу:
-`http://localhost:4000`
+Если без ошибок, приложение доступно по адресу:
+`http://localhost:3000`
