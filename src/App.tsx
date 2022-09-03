@@ -1,10 +1,9 @@
 import React from 'react';
 import './App.css';
 import {BrowserRouter} from "react-router-dom";
-// import AppNavbar from "./components/AppNavbar";
 import AppRouter from './components/AppRouter';
 import { AuthContext } from './context';
-import  AuthStore from './stores/authStore';
+import AuthStore from './stores/authStore';
 
 
 function App() {

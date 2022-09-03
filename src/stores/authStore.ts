@@ -16,4 +16,7 @@ export class AuthStore {
         return this.isAuthFlag;
     }
 }
-export default new AuthStore()
+const authStore = new AuthStore();
+
+export default authStore;
+export type TAuthStore = typeof authStore;
