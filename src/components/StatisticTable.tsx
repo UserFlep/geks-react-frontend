@@ -28,7 +28,7 @@ const StatisticTable = ({dataArray}:any) => {
     }, {
         dataField: 'short',
         text: 'Короткая ссылка',
-        formatter: (cell:any)=>`http://79.143.31.216/s/${cell}`,
+        formatter: (cell:any)=>`${String(process.env.REACT_APP_API_HOST)}/s/${cell}`,
         sort: true
     }, {
         dataField: 'counter',
