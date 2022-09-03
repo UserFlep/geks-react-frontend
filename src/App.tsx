@@ -2,21 +2,18 @@ import React from 'react';
 import './App.css';
 import {BrowserRouter} from "react-router-dom";
 import AppRouter from './components/AppRouter';
-import { AuthContext } from './context';
-import AuthStore from './stores/authStore';
+import {StoreProvider} from "./context";
 
 
 function App() {
 
   return (
-      <AuthContext.Provider value={{
-          authStore: AuthStore
-      }}>
+      <StoreProvider>
           <BrowserRouter>
               {/*<AppNavbar/>*/}
               <AppRouter/>
           </BrowserRouter>
-      </AuthContext.Provider>
+      </StoreProvider>
   );
 }
 

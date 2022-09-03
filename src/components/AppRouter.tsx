@@ -1,12 +1,12 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {Navigate, Route, Routes} from "react-router-dom";
 import {observer} from "mobx-react-lite";
-import {AuthContext} from "../context";
 import {privateRoutes, publicRoutes} from "../routes";
 import {Container} from "react-bootstrap";
+import {useStore} from "../hooks/useStore";
 
 const AppRouter = observer(() => {
-    const context = useContext(AuthContext);
+    const context = useStore();
     return (
         <Container fluid={'sm'}>
             {context?.authStore.isAuth

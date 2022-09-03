@@ -1,7 +1,7 @@
 import {makeAutoObservable} from "mobx";
 
 
-export class AuthStore {
+class AuthStore {
     isAuthFlag: boolean = !!localStorage.getItem(String(process.env.REACT_APP_TOKEN_KEY));
 
     constructor() {
@@ -16,7 +16,6 @@ export class AuthStore {
         return this.isAuthFlag;
     }
 }
-const authStore = new AuthStore();
 
-export default authStore;
-export type TAuthStore = typeof authStore;
+export default new AuthStore();
+//Следует использовать только в файле context/index.tsx

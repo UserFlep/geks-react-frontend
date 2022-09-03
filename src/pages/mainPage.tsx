@@ -1,16 +1,16 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button, Form, Nav, Tooltip, OverlayTrigger, InputGroup} from "react-bootstrap";
 import {squeezeRequest, statisticsRequest} from "../requests";
 import AppNavbar from "../components/AppNavbar";
-import {AuthContext} from "../context";
 import StatisticTable from "../components/StatisticTable";
 import AppSpinner from "../components/AppSpinner";
+import {useStore} from "../hooks/useStore";
 
 const MainPage = () => {
     const [longUrl, setLongUrl] = useState("");
     const [shortUrl, setShortUrl] = useState("");
     const [btnCopyText, setBtnCopyText] = useState("Скопировать");
-    const context = useContext(AuthContext);
+    const context = useStore();
     const [tableData, setTableData] = useState();
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState("");

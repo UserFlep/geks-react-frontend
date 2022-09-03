@@ -12,7 +12,6 @@ const RegPage = () => {
     const handleBtnClick = () => {
 
         registrationRequest(login, pass).then(res => {
-            console.log(res.data)
             if(res.data.username)
                 navigate('/login');
         })

@@ -1,7 +1,10 @@
-import React from 'react';
+import React, {FC, ReactNode} from 'react';
 import {Container, Nav, Navbar} from 'react-bootstrap';
 
-const AppNavbar = ({children}:any) => {
+interface INavbarProps {
+    children: ReactNode
+}
+const AppNavbar: FC<INavbarProps> = ({children}) => {
     return (
         <Navbar bg="dark" variant="dark" >
             <Container>

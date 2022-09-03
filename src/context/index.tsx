@@ -1,10 +1,10 @@
-import {createContext, useContext} from 'react'
-import authStore, {TAuthStore} from "../stores/authStore";
+import {createContext, ReactNode} from 'react'
+import AuthStore from "../stores/authStore";
 import {useLocalStore} from "mobx-react-lite";
 
 //Какие данные попадают в контекст (в поле value)
 export interface IStoreContext {
-    authStore: TAuthStore
+    authStore: typeof AuthStore,
 }
 
 //Создаем контекст, с интерфесом, в  котором определены допустимые значения
@@ -12,7 +12,7 @@ export const StoreContext = createContext<IStoreContext|null>(null);
 
 //Создаем StoreProvider здесь, чтобы не тащить в <App/> созданный контекс и все значения контекста к нему,
 //
-// *****Вместо записи :*****
+// *****Вместо записи :****************************************
 //
 // const store = useLocalStore(()=>({
 //     authStore,
@@ -21,26 +21,19 @@ export const StoreContext = createContext<IStoreContext|null>(null);
 //      <App/>
 // </StoreContext.Provider>
 //
-// *****Получаем:*****
+// *****Получаем:**********************************************
 //
 //  <StoreProvider>
 //      <App/>
 //  </StoreProvider>
-export const StoreProvider = ({ children }:any) => {
+interface IStoreProviderProps {
+    children?: ReactNode
+}
+export const StoreProvider = ({ children }: IStoreProviderProps) => {
+    //В store помещаем значения согласно IStoreContext
     const store = useLocalStore(()=>({
-        authStore,
-    }) )
+        authStore: AuthStore,
+    }))
     return <StoreContext.Provider value={store}>{children}</StoreContext.Provider>
 }
 
-//Чтобы везде где нужно получить данные с контекста
-//не импортировать хук  useContext и сам контекст (StoreContext),
-//создадм свой хук, где это будет обьеденено в одно место
-// + проверка на ошибку
-export const useStore = () => {
-    const store = useContext(StoreContext)
-    if (!store) {
-        throw new Error('useStore должен быть использован только в пределах StoreProvider.')
-    }
-    return store
-}

@@ -1,13 +1,13 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import {ILoginReqProps, loginRequest} from "../requests";
 import {Button, Form} from "react-bootstrap";
-import {AuthContext} from "../context";
 import {Link} from "react-router-dom";
+import {useStore} from "../hooks/useStore";
 
 const LoginPage = () => {
     const [login, setLogin] = useState("");
     const [pass, setPass] = useState("");
-    const context = useContext(AuthContext)
+    const context = useStore();
 
     const handleBtnClick = async () => {
         const loginParams: ILoginReqProps = {
